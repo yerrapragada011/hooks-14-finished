@@ -5,7 +5,7 @@ const initialState = {
   error: null,
   data: null,
   extra: null,
-  identifier: null
+  identifier: null,
 };
 
 const httpReducer = (curHttpState, action) => {
@@ -16,14 +16,14 @@ const httpReducer = (curHttpState, action) => {
         error: null,
         data: null,
         extra: null,
-        identifier: action.identifier
+        identifier: action.identifier,
       };
     case 'RESPONSE':
       return {
         ...curHttpState,
         loading: false,
         data: action.responseData,
-        extra: action.extra
+        extra: action.extra,
       };
     case 'ERROR':
       return { loading: false, error: action.errorMessage };
@@ -46,23 +46,23 @@ const useHttp = () => {
         method: method,
         body: body,
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       })
-        .then(response => {
+        .then((response) => {
           return response.json();
         })
-        .then(responseData => {
+        .then((responseData) => {
           dispatchHttp({
             type: 'RESPONSE',
             responseData: responseData,
-            extra: reqExtra
+            extra: reqExtra,
           });
         })
-        .catch(error => {
+        .catch((error) => {
           dispatchHttp({
             type: 'ERROR',
-            errorMessage: 'Something went wrong!'
+            errorMessage: 'Something went wrong!',
           });
         });
     },
@@ -76,7 +76,7 @@ const useHttp = () => {
     sendRequest: sendRequest,
     reqExtra: httpState.extra,
     reqIdentifer: httpState.identifier,
-    clear: clear
+    clear: clear,
   };
 };
 

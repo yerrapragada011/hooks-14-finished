@@ -4,7 +4,7 @@ import Card from './UI/Card';
 import { AuthContext } from '../context/auth-context';
 import './Auth.css';
 
-const Auth = props => {
+const Auth = (props) => {
   const authContext = useContext(AuthContext);
 
   const loginHandler = () => {
@@ -12,7 +12,7 @@ const Auth = props => {
   };
 
   return (
-    <div className="auth">
+    <div className='auth'>
       <Card>
         <h2>You are not authenticated!</h2>
         <p>Please log in to continue.</p>
